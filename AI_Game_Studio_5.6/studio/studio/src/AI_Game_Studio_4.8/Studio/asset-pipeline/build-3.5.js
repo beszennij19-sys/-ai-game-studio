@@ -1,0 +1,27 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const root = process.argv[2] || process.cwd();
+const dataDir = path.join(root, 'Studio', 'data');
+const outDir = path.join(root, 'Studio', 'generated-3.5');
+const read = async n => JSON.parse(await fs.readFile(path.join(dataDir,n),'utf8'));
+const safe = s => String(s||'asset').replace(/[^a-z0-9_-]+/gi,'_').slice(0,64);
+const bp = await read('Blueprint.json').catch(()=>({}));
+const world = await read('World.json').catch(()=>({}));
+const npcs = await read('NPCs.json').catch(()=>({}));
+const projectId = bp.projectId || 'PROJECT-UNASSIGNED';
+const jobs=[];
+const add=(type,name,prompt,format='glb')=>jobs.push({jobId:`ASSET35-${jobs.length+1}-${safe(name).toUpperCase()}`,projectId,type,name,prompt,format,status:'planned',target:`Assets/AIStudio/Generated/${projectId}/${type}/${safe(name)}`});
+add('characters','Player',`Original ${bp.visualStyle||'3D'} game player for ${bp.title||'the game'}, camera ${bp.camera||'third-person'}. Full-body neutral pose, clean topology, game-ready proportions.`);
+for(const n of (npcs.npcs||npcs.characters||[]).slice(0,20)) add('characters',n.name||n.id||'NPC',`Original game NPC. Role: ${n.role||'NPC'}. Visual style: ${bp.visualStyle||'3D'}. Designed for a coherent game world.`);
+for(const l of (world.locations||[]).slice(0,20)) add('environment',l.name||l.id||'Location',`Original environment kit for location ${l.name||l.id}. Style ${bp.visualStyle||'realistic 3D'}. Modular game-ready pieces, consistent scale.`);
+for(const r of (world.resources||[]).slice(0,30)) add('props',r.name||r.id||'Resource',`Original collectible/resource prop ${r.name||r.id}, matching the game's ${bp.visualStyle||'3D'} visual style.`);
+add('ui','GameUI',`Original game UI icon and HUD asset set for ${bp.title||'the game'}, optimized for mobile touch targets and ${bp.visualStyle||'clean'} presentation.` ,'png');
+add('materials','MaterialSet',`Original material library for the game's environment and characters, coherent with ${bp.visualStyle||'realistic 3D'} style.` ,'png');
+add('animations','CoreAnimationSet','Game-ready animation set: idle, locomotion, interaction, attack/use, hit, death. Consistent skeleton and naming.' ,'fbx');
+add('audio','CoreAudioSet','Original non-lyrical game audio set: UI clicks, interaction, pickup, footsteps, ambient loops.' ,'wav');
+const manifest={schema:'ai-game-studio.asset-pipeline/3.5',projectId,createdAt:new Date().toISOString(),visualStyle:bp.visualStyle||null, jobs, importRoot:`Assets/AIStudio/Generated/${projectId}`};
+await fs.mkdir(outDir,{recursive:true});
+await fs.writeFile(path.join(outDir,'AssetPipelineManifest.json'),JSON.stringify(manifest,null,2));
+await fs.writeFile(path.join(outDir,'README.txt'),`3.5 asset pipeline for ${projectId}. Jobs are provider-neutral. Real 3D/FBX/WAV generation requires connected providers; Unity can import completed files into the project-scoped Generated folder.`);
+console.log(JSON.stringify(manifest,null,2));

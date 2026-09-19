@@ -1,0 +1,6 @@
+{
+  "version":"3.6.0",
+  "name":"AI Game Studio 3.6 — Real 3D Provider Pipeline",
+  "base":"3.5",
+  "features":["Meshy text-to-3D","Meshy image-to-3D","preview-refine workflow","GLB download","project-isolated asset storage","provider job polling","server-side API key"]
+}

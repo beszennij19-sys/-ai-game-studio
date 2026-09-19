@@ -1,0 +1,39 @@
+{
+  "projectId": "PROJECT-3-0-DEMO",
+  "version": "3.0.0",
+  "title": "AI Game Studio Project",
+  "genre": "survival",
+  "visualStyle": "realistic 3D",
+  "scale": "small",
+  "camera": "third-person",
+  "playerMode": "solo",
+  "networking": "offline",
+  "story": {
+    "premise": "Replace this with the user's game idea.",
+    "chapters": [],
+    "characters": [],
+    "endings": []
+  },
+  "world": {
+    "locations": [],
+    "resources": [],
+    "events": []
+  },
+  "systems": [
+    "movement",
+    "camera",
+    "health",
+    "inventory",
+    "quests",
+    "dialogue",
+    "save",
+    "ui",
+    "mobile_controls"
+  ],
+  "buildTargets": [
+    "WebGL",
+    "Windows",
+    "Android",
+    "iOS"
+  ]
+}

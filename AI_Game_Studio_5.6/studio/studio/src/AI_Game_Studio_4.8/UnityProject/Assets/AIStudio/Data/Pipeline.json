@@ -1,0 +1,35 @@
+{
+  "pipelineVersion": "3.2",
+  "description": "Automatic Blueprint to Unity-ready project export",
+  "oneDescriptionToProject": true,
+  "projectIsolation": {
+    "uniqueProjectId": true,
+    "separateData": true,
+    "separateSaveNamespace": true
+  },
+  "stages": [
+    "AI Input",
+    "Blueprint",
+    "Gameplay",
+    "World",
+    "NPC AI",
+    "Quests",
+    "Dialogue",
+    "Branching Story",
+    "Save",
+    "HUD",
+    "Mobile Controls",
+    "Adaptive UI",
+    "Automatic Unity Export",
+    "Unity Scene Generation",
+    "Validation",
+    "Build Export"
+  ],
+  "oneClickUnityMenu": "AI Game Studio/3.2/Build Everything",
+  "targets": [
+    "WebGL",
+    "Windows",
+    "Android",
+    "iOS"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "3.8",
+  "rules": {
+    "terrain": "generate_from_world_scale_and_locations",
+    "architecture": "generate_per_location",
+    "props": "populate_by_location_type",
+    "roads": "connect_locations",
+    "poi": "place_from_blueprint",
+    "spawns": "derive_from_npcs_and_player",
+    "navigation": "prepare_navmesh_regions"
+  }
+}

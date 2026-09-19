@@ -1,0 +1,21 @@
+{
+  "name": "ai-game-studio-4.9",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server-4.9.mjs",
+    "worker": "node ../worker/worker-4.6.mjs",
+    "migrate": "node db/migrate-4.6.mjs",
+    "smoke": "node ../deploy/smoke-test.mjs"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^5.12.2",
+    "pg": "^8.16.3"
+  }
+}

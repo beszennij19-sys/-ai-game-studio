@@ -1,0 +1,18 @@
+{
+  "version": "4.0",
+  "name": "AI Game Runtime",
+  "modules": [
+    "player-controller",
+    "camera",
+    "mobile-controls",
+    "world",
+    "npc-ai",
+    "quests",
+    "inventory",
+    "events",
+    "save-load",
+    "hud"
+  ],
+  "flow": "Blueprint -> Generated Data -> Runtime -> Unity Scene -> Build",
+  "projectIsolation": "All runtime state is scoped by ProjectID"
+}

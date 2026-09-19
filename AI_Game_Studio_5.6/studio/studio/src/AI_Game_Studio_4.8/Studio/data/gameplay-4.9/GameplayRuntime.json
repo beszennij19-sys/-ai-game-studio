@@ -1,0 +1,6 @@
+{
+  "version": "4.9.0",
+  "description": "Blueprint-driven gameplay compiler output",
+  "features": ["movement","camera","health","combat","inventory","quests","dialogue","mobile_controls"],
+  "rules": {"enemyChase":true,"damageOnContact":true,"questProgress":true,"interactReward":true}
+}

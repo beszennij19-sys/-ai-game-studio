@@ -1,0 +1,1 @@
+{"type":"object","required":["version","projectId","genre","camera","features","spawn","rules"],"properties":{"version":{"type":"string"},"projectId":{"type":["string","null"]},"genre":{"type":"string"},"camera":{"type":"string"},"features":{"type":"object"},"spawn":{"type":"object"},"rules":{"type":"object"}}}

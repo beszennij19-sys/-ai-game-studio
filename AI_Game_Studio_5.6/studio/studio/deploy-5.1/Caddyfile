@@ -1,0 +1,4 @@
+# Replace example.com with your real domain.
+example.com {
+  reverse_proxy web:8080
+}

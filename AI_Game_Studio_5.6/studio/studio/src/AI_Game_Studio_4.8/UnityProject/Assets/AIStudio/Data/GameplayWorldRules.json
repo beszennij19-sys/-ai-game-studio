@@ -1,0 +1,41 @@
+{
+  "version": "3.9",
+  "rules": {
+    "locations": [
+      "spawn_npcs",
+      "activate_quests",
+      "enable_resources",
+      "select_encounters"
+    ],
+    "npcs": [
+      "schedule",
+      "patrol",
+      "react_to_events",
+      "quest_interaction"
+    ],
+    "quests": [
+      "location_trigger",
+      "npc_trigger",
+      "resource_trigger",
+      "event_trigger"
+    ],
+    "events": [
+      "ambient",
+      "location",
+      "quest",
+      "encounter"
+    ],
+    "encounters": [
+      "condition_check",
+      "selection",
+      "spawn",
+      "resolution"
+    ],
+    "save": [
+      "world_state",
+      "quest_state",
+      "event_state",
+      "player_progress"
+    ]
+  }
+}

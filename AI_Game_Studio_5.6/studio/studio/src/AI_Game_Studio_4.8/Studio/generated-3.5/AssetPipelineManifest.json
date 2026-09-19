@@ -1,0 +1,59 @@
+{
+  "schema": "ai-game-studio.asset-pipeline/3.5",
+  "projectId": "PROJECT-3-0-DEMO",
+  "createdAt": "2026-09-18T22:44:51.012Z",
+  "visualStyle": "realistic 3D",
+  "jobs": [
+    {
+      "jobId": "ASSET35-1-PLAYER",
+      "projectId": "PROJECT-3-0-DEMO",
+      "type": "characters",
+      "name": "Player",
+      "prompt": "Original realistic 3D game player for AI Game Studio Project, camera third-person. Full-body neutral pose, clean topology, game-ready proportions.",
+      "format": "glb",
+      "status": "planned",
+      "target": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO/characters/Player"
+    },
+    {
+      "jobId": "ASSET35-2-GAMEUI",
+      "projectId": "PROJECT-3-0-DEMO",
+      "type": "ui",
+      "name": "GameUI",
+      "prompt": "Original game UI icon and HUD asset set for AI Game Studio Project, optimized for mobile touch targets and realistic 3D presentation.",
+      "format": "png",
+      "status": "planned",
+      "target": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO/ui/GameUI"
+    },
+    {
+      "jobId": "ASSET35-3-MATERIALSET",
+      "projectId": "PROJECT-3-0-DEMO",
+      "type": "materials",
+      "name": "MaterialSet",
+      "prompt": "Original material library for the game's environment and characters, coherent with realistic 3D style.",
+      "format": "png",
+      "status": "planned",
+      "target": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO/materials/MaterialSet"
+    },
+    {
+      "jobId": "ASSET35-4-COREANIMATIONSET",
+      "projectId": "PROJECT-3-0-DEMO",
+      "type": "animations",
+      "name": "CoreAnimationSet",
+      "prompt": "Game-ready animation set: idle, locomotion, interaction, attack/use, hit, death. Consistent skeleton and naming.",
+      "format": "fbx",
+      "status": "planned",
+      "target": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO/animations/CoreAnimationSet"
+    },
+    {
+      "jobId": "ASSET35-5-COREAUDIOSET",
+      "projectId": "PROJECT-3-0-DEMO",
+      "type": "audio",
+      "name": "CoreAudioSet",
+      "prompt": "Original non-lyrical game audio set: UI clicks, interaction, pickup, footsteps, ambient loops.",
+      "format": "wav",
+      "status": "planned",
+      "target": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO/audio/CoreAudioSet"
+    }
+  ],
+  "importRoot": "Assets/AIStudio/Generated/PROJECT-3-0-DEMO"
+}

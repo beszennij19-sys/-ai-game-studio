@@ -1,0 +1,37 @@
+{
+  "pipelineVersion": "4.2",
+  "oneDescriptionToProject": true,
+  "projectIsolation": {
+    "uniqueProjectId": true,
+    "separateData": true,
+    "separateSaveNamespace": true
+  },
+  "stages": [
+    "AI Input",
+    "Blueprint",
+    "Gameplay",
+    "World",
+    "NPC AI",
+    "Quests",
+    "Dialogue",
+    "Branching Story",
+    "Save",
+    "HUD",
+    "Mobile Controls",
+    "Adaptive UI",
+    "Unity Scene",
+    "Validation",
+    "Build Export",
+    "AI Asset Jobs",
+    "Asset Import Hooks",
+    "Complete Game Orchestration",
+    "Build Manifest",
+    "Validation Report"
+  ],
+  "buildTargets": [
+    "WebGL",
+    "Windows",
+    "Android",
+    "iOS"
+  ]
+}

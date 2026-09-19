@@ -1,0 +1,17 @@
+{
+  "version": "4.0.0",
+  "name": "AI Game Studio 4.0 — Unified AI Game Runtime",
+  "status": "runtime-framework",
+  "modules": [
+    "player",
+    "camera",
+    "controls",
+    "world",
+    "npc",
+    "quests",
+    "inventory",
+    "events",
+    "save",
+    "hud"
+  ]
+}

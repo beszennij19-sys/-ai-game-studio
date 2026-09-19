@@ -1,0 +1,51 @@
+{
+  "version": "4.9.0",
+  "projectId": "PROJECT-3-0-DEMO",
+  "genre": "survival",
+  "camera": "third-person",
+  "features": {
+    "movement": true,
+    "camera": true,
+    "health": true,
+    "combat": true,
+    "inventory": true,
+    "crafting": false,
+    "building": false,
+    "quests": true,
+    "dialogue": true,
+    "vehicles": false,
+    "stealth": false,
+    "save": true,
+    "mobileControls": true,
+    "enemies": true
+  },
+  "world": {
+    "locations": [],
+    "resources": [],
+    "events": []
+  },
+  "story": {
+    "quests": [],
+    "characters": [],
+    "endings": []
+  },
+  "spawn": {
+    "enemies": 4,
+    "pickups": 6,
+    "npcs": 0,
+    "locations": 1
+  },
+  "controls": {
+    "mobile": true,
+    "desktop": true
+  },
+  "rules": {
+    "enemyChase": true,
+    "damageOnContact": true,
+    "interactReward": true,
+    "questProgress": true,
+    "crafting": false,
+    "building": false,
+    "vehicleMode": false
+  }
+}

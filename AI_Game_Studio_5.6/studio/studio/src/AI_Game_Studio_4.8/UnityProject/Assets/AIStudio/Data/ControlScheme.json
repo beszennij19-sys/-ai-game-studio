@@ -1,0 +1,14 @@
+{
+  "mobile": [
+    "joystick",
+    "look",
+    "action",
+    "interact"
+  ],
+  "desktop": [
+    "WASD",
+    "mouse",
+    "Space",
+    "E"
+  ]
+}

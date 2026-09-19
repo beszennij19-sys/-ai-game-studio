@@ -1,0 +1,19 @@
+{
+  "version": "4.1",
+  "name": "AI Game Director Runtime",
+  "purpose": "Runtime orchestration of story, quests, NPCs, locations, events, rewards and consequences",
+  "graph": [
+    "story",
+    "quest",
+    "npc",
+    "location",
+    "event",
+    "reward",
+    "consequence"
+  ],
+  "rules": {
+    "deterministic": true,
+    "projectScoped": true,
+    "noCrossProjectState": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "version": "3.7",
+  "description": "AI Character Pipeline: concept -> 3D model -> materials -> rig -> animations -> Unity prefab",
+  "stages": [
+    {
+      "id": "concept",
+      "input": [
+        "Blueprint",
+        "NPCs"
+      ],
+      "output": "character_concept_job"
+    },
+    {
+      "id": "model",
+      "input": [
+        "character_concept_job"
+      ],
+      "output": "model_job"
+    },
+    {
+      "id": "materials",
+      "input": [
+        "model_job"
+      ],
+      "output": "material_job"
+    },
+    {
+      "id": "rig",
+      "input": [
+        "model_job"
+      ],
+      "output": "rig_job"
+    },
+    {
+      "id": "animation",
+      "input": [
+        "rig_job"
+      ],
+      "output": "animation_jobs"
+    },
+    {
+      "id": "unity_prefab",
+      "input": [
+        "model_job",
+        "material_job",
+        "rig_job",
+        "animation_jobs"
+      ],
+      "output": "prefab_manifest"
+    }
+  ],
+  "isolation": "Every character asset is stored under Generated/<ProjectID>/Characters/<CharacterID>/"
+}

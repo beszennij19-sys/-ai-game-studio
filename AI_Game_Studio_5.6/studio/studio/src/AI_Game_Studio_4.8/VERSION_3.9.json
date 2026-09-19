@@ -1,0 +1,6 @@
+{
+  "version": "3.9.0",
+  "name": "AI Game Studio 3.9 — AI Gameplay World",
+  "build": "world-npcs-quests-resources-events-encounters-runtime",
+  "status": "runtime-ready"
+}

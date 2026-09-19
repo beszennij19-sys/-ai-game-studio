@@ -1,0 +1,1 @@
+3.5 asset pipeline for PROJECT-3-0-DEMO. Jobs are provider-neutral. Real 3D/FBX/WAV generation requires connected providers; Unity can import completed files into the project-scoped Generated folder.

@@ -1,0 +1,9 @@
+{
+  "profile": "survival",
+  "mobile": [
+    "joystick",
+    "action",
+    "interact",
+    "inventory"
+  ]
+}

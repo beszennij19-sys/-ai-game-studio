@@ -1,0 +1,20 @@
+name: AI Game Studio CI
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax check
+        run: |
+          node --check Studio/backend/server-4.7.mjs
+          node --check Studio/worker/worker-4.6.mjs
+          node --check Studio/builder-4.2/build-4.2.js
+          node --check Studio/web/4.6/app.js
+      - name: Docker build
+        run: docker build -f Studio/deploy/Dockerfile -t ai-game-studio:ci .

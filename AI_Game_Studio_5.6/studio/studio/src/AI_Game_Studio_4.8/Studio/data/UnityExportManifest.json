@@ -1,0 +1,15 @@
+{
+  "projectId": "PROJECT-3-0-DEMO",
+  "unityRoot": "UnityProject",
+  "dataFiles": [
+    "Assets/AIStudio/Data/Blueprint.json",
+    "Assets/AIStudio/Data/Gameplay.json",
+    "Assets/AIStudio/Data/World.json",
+    "Assets/AIStudio/Data/NPCs.json",
+    "Assets/AIStudio/Data/Quests.json",
+    "Assets/AIStudio/Data/QuestGraph.json",
+    "Assets/AIStudio/Data/UIDesign.json",
+    "Assets/AIStudio/Data/ControlScheme.json"
+  ],
+  "editorCommand": "AI Game Studio/Create Complete Project From Blueprint"
+}

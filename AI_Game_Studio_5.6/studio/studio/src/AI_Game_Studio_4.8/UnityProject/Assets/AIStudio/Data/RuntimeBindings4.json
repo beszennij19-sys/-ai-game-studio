@@ -1,0 +1,15 @@
+{
+  "version": "4.0",
+  "bindings": [
+    "PlayerController -> Runtime",
+    "MobileControls -> PlayerController",
+    "Camera -> PlayerController",
+    "World -> Runtime",
+    "NPC -> World",
+    "Quest -> NPC/World/Player",
+    "Inventory -> Player/Quest",
+    "Events -> World/NPC/Quest",
+    "Save -> Runtime",
+    "HUD -> Runtime"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name":"ai-game-studio-5.3",
+  "private":true,
+  "type":"module",
+  "scripts":{"start":"node server-5.3.mjs","check":"node --check server-5.3.mjs && node --check ../ai-5.3/blueprint-5.3.mjs"},
+  "dependencies":{"dotenv":"^17.2.2","express":"^5.1.0","openai":"^6.11.0","zod":"^4.1.12"}
+}

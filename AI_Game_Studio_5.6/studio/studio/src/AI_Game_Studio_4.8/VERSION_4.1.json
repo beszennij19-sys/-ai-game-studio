@@ -1,0 +1,14 @@
+{
+  "version": "4.1.0",
+  "name": "AI Game Studio 4.1 — AI Game Director Runtime",
+  "status": "orchestration-runtime",
+  "graph": [
+    "story",
+    "quest",
+    "npc",
+    "location",
+    "event",
+    "reward",
+    "consequence"
+  ]
+}

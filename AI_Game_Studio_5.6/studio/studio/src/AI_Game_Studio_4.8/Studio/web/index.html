@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8">
+<title>AI Game Studio 3.1</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark}
+body{margin:0;background:#0b0c0f;color:#f4f4f5;padding:16px}
+main{max-width:760px;margin:auto}
+.card{background:#17191e;border:1px solid #30333a;border-radius:18px;padding:16px;margin:12px 0}
+textarea,input{width:100%;box-sizing:border-box;background:#0e1014;color:#fff;border:1px solid #3b3f48;border-radius:12px;padding:13px;font-size:16px}
+textarea{min-height:160px;resize:vertical}
+button{width:100%;padding:14px;border:0;border-radius:13px;font-size:16px;font-weight:750;margin-top:10px}
+button:disabled{opacity:.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stage{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #2b2e35}
+.muted{color:#a6a9b0}
+pre{white-space:pre-wrap;overflow:auto;max-height:500px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main>
+<div class="card">
+<h1>AI Game Studio 3.1</h1>
+<div class="muted">Напиши идею → получи отдельный Game Blueprint.</div>
+</div>
+<div class="card">
+<label>Описание игры</label>
+<textarea id="idea" placeholder="Например: реалистичный survival от третьего лица на большом острове. Игрок ищет ресурсы, строит базу, встречает NPC, выполняет квесты и делает выборы, влияющие на концовку."></textarea>
+<div class="row">
+<button onclick="generate()">Создать игру</button>
+<button onclick="health()">Проверить сервер</button>
+</div>
+<p id="status" class="muted"></p>
+</div>
+<div class="card">
+<h2>Pipeline</h2>
+<div id="stages"></div>
+</div>
+<div class="card" id="result" hidden>
+<h2 id="title"></h2>
+<p id="pitch"></p>
+<p><b>Project ID:</b> <span id="pid"></span></p>
+<pre id="json"></pre>
+</div>
+<script>
+const names=["AI Input","Blueprint","Gameplay","World","NPC AI","Quests","Dialogue","Branching Story","Save","HUD","Mobile Controls","Adaptive UI","Unity Scene","Validation","Build Export"];
+const stages=document.getElementById("stages");
+stages.innerHTML=names.map((n,i)=>`<div class=stage><span>${n}</span><b id=s${i}>WAIT</b></div>`).join("");
+const set=(i,v)=>document.getElementById("s"+i).textContent=v;
+async function health(){
+ try{const r=await fetch("http://localhost:8787/api/health"); const x=await r.json(); document.getElementById("status").textContent=x.ok?"Сервер работает. AI: "+(x.aiConfigured?"подключён":"ключ не задан"):"Сервер недоступен";}
+ catch(e){document.getElementById("status").textContent="Сервер недоступен. Запусти backend."; }
+}
+async function generate(){
+ const idea=document.getElementById("idea").value.trim();
+ if(!idea)return;
+ document.querySelector("button").disabled=true;
+ for(let i=0;i<names.length;i++) set(i,i===0?"RUN":"WAIT");
+ try{
+  const created=await (await fetch("http://localhost:8787/api/projects",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({idea})})).json();
+  set(0,"DONE"); set(1,"RUN");
+  const out=await (await fetch("http://localhost:8787/api/projects/"+created.projectId+"/generate",{method:"POST"})).json();
+  if(out.error) throw new Error(out.error);
+  for(let i=1;i<names.length;i++) set(i,"DONE");
+  const b=out.project.blueprint;
+  document.getElementById("result").hidden=false;
+  document.getElementById("title").textContent=b.title||"AI Generated Game";
+  document.getElementById("pitch").textContent=b.elevatorPitch||"";
+  document.getElementById("pid").textContent=out.project.projectId;
+  document.getElementById("json").textContent=JSON.stringify(b,null,2);
+  document.getElementById("status").textContent=out.ai?"Blueprint создан реальным AI.":"Создан локальный fallback Blueprint.";
+ }catch(e){document.getElementById("status").textContent="Ошибка: "+e.message;}
+ document.querySelector("button").disabled=false;
+}
+</script>
+</main></body></html>

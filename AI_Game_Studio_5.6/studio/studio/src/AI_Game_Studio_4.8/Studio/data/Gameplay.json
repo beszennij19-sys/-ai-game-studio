@@ -1,0 +1,17 @@
+{
+  "player": {
+    "movement": "third_person",
+    "health": 100
+  },
+  "systems": [
+    "movement",
+    "camera",
+    "health",
+    "inventory",
+    "quests",
+    "dialogue",
+    "save",
+    "ui",
+    "mobile_controls"
+  ]
+}

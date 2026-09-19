@@ -1,0 +1,10 @@
+{
+  "name": "AI Game Studio",
+  "short_name": "AI Studio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080a0f",
+  "theme_color": "#080a0f",
+  "lang": "ru",
+  "icons": []
+}

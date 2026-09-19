@@ -1,0 +1,8 @@
+{
+  "version": "4.7.0",
+  "name": "AI Game Studio 4.7 — Production Deployment",
+  "stage": "production-deployment",
+  "buildable": true,
+  "publicDeploymentReady": true,
+  "notes": "Includes production Docker/Compose, Caddy HTTPS reverse proxy, environment template, backup/smoke-test scripts, CI workflow, PWA shell and deployment documentation. A real domain/server and provider credentials are still required for public deployment."
+}

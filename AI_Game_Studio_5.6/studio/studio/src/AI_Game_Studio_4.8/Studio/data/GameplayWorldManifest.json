@@ -1,0 +1,23 @@
+{
+  "version": "3.9",
+  "name": "AI Gameplay World",
+  "pipeline": [
+    "world_locations",
+    "npc_population",
+    "quest_triggers",
+    "resource_nodes",
+    "world_events",
+    "factions",
+    "encounters",
+    "progression_links",
+    "save_state",
+    "unity_runtime"
+  ],
+  "isolation": "Generated/<ProjectID>/GameplayWorld/<WorldID>/",
+  "outputs": [
+    "GameplayWorld.json",
+    "EventGraph.json",
+    "EncounterTable.json",
+    "RuntimeBindings.json"
+  ]
+}

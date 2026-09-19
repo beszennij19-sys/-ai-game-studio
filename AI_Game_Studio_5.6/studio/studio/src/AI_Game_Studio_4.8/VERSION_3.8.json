@@ -1,0 +1,6 @@
+{
+  "version": "3.8.0",
+  "name": "AI Game Studio 3.8 — AI World Generator",
+  "build": "world-plan-location-environment-roads-poi-unity-scene",
+  "status": "provider-ready"
+}

@@ -1,0 +1,9 @@
+{
+  "schema":"ai-game-studio.provider-config/3.6",
+  "providers":{
+    "image":"openai",
+    "3d":"meshy"
+  },
+  "default3DFormat":"glb",
+  "projectIsolation":true
+}

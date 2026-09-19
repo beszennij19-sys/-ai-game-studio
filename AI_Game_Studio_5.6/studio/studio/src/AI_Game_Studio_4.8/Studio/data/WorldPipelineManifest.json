@@ -1,0 +1,21 @@
+{
+  "version": "3.8",
+  "name": "AI World Generator",
+  "pipeline": [
+    "blueprint_to_world_plan",
+    "location_generation",
+    "environment_props",
+    "roads_and_paths",
+    "points_of_interest",
+    "spawn_points",
+    "scene_manifest",
+    "unity_scene_import"
+  ],
+  "isolation": "Generated/<ProjectID>/World/<WorldID>/",
+  "outputs": [
+    "WorldPlan.json",
+    "SceneManifest.json",
+    "LocationJobs.json",
+    "ImportManifest.json"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "version": "5.8.0",
+  "name": "AI Game Studio Release Candidate",
+  "releaseCandidate": true,
+  "finalForDeployment": true,
+  "publicDeploymentRequired": true,
+  "notes": "Feature-frozen release candidate. Final public launch requires deployment credentials, domain, database, AI provider key, and any Unity/Apple/Google signing credentials."
+}

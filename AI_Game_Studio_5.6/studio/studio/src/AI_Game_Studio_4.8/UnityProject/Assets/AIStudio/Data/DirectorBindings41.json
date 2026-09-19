@@ -1,0 +1,13 @@
+{
+  "version": "4.1",
+  "links": [
+    "Story -> Quest",
+    "Quest -> NPC",
+    "Quest -> Location",
+    "Location -> Event",
+    "Event -> Consequence",
+    "Quest -> Reward",
+    "Choice -> Story Branch",
+    "Director -> Save State"
+  ]
+}

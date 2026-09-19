@@ -1,0 +1,9 @@
+{
+  "name": "AI Game Studio",
+  "version": "3.4.0",
+  "codename": "Real AI Asset Generation",
+  "base": "3.3.0",
+  "real_generation": {"images": true, "3d_models": false, "audio": false, "vfx": false},
+  "project_isolation": true,
+  "server_side_api_key": true
+}

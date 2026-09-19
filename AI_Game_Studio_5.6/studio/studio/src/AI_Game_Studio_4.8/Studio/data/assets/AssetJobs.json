@@ -1,0 +1,62 @@
+[
+  {
+    "jobId": "ASSET-0001",
+    "projectId": "PROJECT-3-0-DEMO",
+    "type": "key_art",
+    "name": "AI Game Studio Project",
+    "category": "art",
+    "status": "spec_ready",
+    "generationProvider": null,
+    "prompt": "Create original key art for a survival with realistic 3D style. Title: AI Game Studio Project. No protected characters, logos, or copied franchise elements.",
+    "outputs": [
+      "PNG 1600x900"
+    ],
+    "source": "Blueprint"
+  },
+  {
+    "jobId": "ASSET-0002",
+    "projectId": "PROJECT-3-0-DEMO",
+    "type": "player_character",
+    "name": "Player Character",
+    "category": "characters",
+    "status": "spec_ready",
+    "generationProvider": null,
+    "prompt": "Create an original playable character for AI Game Studio Project in realistic 3D. Silhouette must read clearly on mobile, with neutral, walk, run, interaction and combat-ready poses as applicable.",
+    "outputs": [
+      "GLB/FBX",
+      "PBR textures",
+      "idle/walk/run animations"
+    ],
+    "source": "Blueprint"
+  },
+  {
+    "jobId": "ASSET-0003",
+    "projectId": "PROJECT-3-0-DEMO",
+    "type": "audio_pack",
+    "name": "Core Audio Pack",
+    "category": "audio",
+    "status": "spec_ready",
+    "generationProvider": null,
+    "prompt": "Create original audio direction and assets for AI Game Studio Project: UI taps, interaction, pickup, quest complete, damage, ambience and adaptive background music.",
+    "outputs": [
+      "WAV/OGG audio set",
+      "loop metadata"
+    ],
+    "source": "Blueprint"
+  },
+  {
+    "jobId": "ASSET-0004",
+    "projectId": "PROJECT-3-0-DEMO",
+    "type": "vfx_pack",
+    "name": "Core VFX Pack",
+    "category": "vfx",
+    "status": "spec_ready",
+    "generationProvider": null,
+    "prompt": "Create original VFX specifications for AI Game Studio Project: interaction feedback, pickup, quest completion, damage and environment effects appropriate to realistic 3D.",
+    "outputs": [
+      "VFX graph/specs",
+      "flipbooks/textures"
+    ],
+    "source": "Blueprint"
+  }
+]

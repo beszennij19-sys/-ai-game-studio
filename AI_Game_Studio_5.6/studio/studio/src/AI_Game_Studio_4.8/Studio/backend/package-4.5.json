@@ -1,0 +1,7 @@
+{
+  "name":"ai-game-studio-4.5",
+  "private":true,
+  "type":"module",
+  "scripts":{"start":"node server-4.5.mjs"},
+  "dependencies":{"cors":"^2.8.5","dotenv":"^16.4.7","express":"^5.1.0","openai":"^5.12.2"}
+}

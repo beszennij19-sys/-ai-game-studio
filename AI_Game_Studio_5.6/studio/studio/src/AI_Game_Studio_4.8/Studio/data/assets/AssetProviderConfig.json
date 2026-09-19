@@ -1,0 +1,10 @@
+{
+  "version": "3.4.0",
+  "providers": {
+    "image": {"provider": "openai", "modelEnv": "IMAGE_MODEL", "defaultModel": "gpt-image-2", "endpoint": "/api/assets/:projectId/generate-image"},
+    "model3d": {"provider": null, "status": "adapter_only"},
+    "audio": {"provider": null, "status": "adapter_only"},
+    "vfx": {"provider": null, "status": "adapter_only"}
+  },
+  "security": {"apiKeyLocation": "server environment only"}
+}
