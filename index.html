@@ -1,387 +1,421 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-<title>AI Game Studio</title>
+<title>AI Game Studio — Создатель игр</title>
 
 <style>
+
+:root{
+--bg:#080b12;
+--panel:#101622;
+--panel2:#151c2b;
+--line:#273149;
+--text:#f4f7ff;
+--muted:#9aa7bd;
+--accent:#6c63ff;
+--accent2:#8b82ff;
+--ok:#25d97a;
+}
+
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
 }
 
 html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  min-height:100%;
-  background:#080b12;
-  color:#fff;
-  font-family:Arial,sans-serif;
+margin:0;
+min-height:100%;
+background:
+radial-gradient(
+circle at 50% -10%,
+#202348 0,
+#080b12 42%
+);
+color:var(--text);
+font-family:Arial,sans-serif;
 }
 
-button,input,textarea,select{
-  font:inherit;
+button,
+input,
+textarea,
+select{
+font:inherit;
 }
 
 button{
-  cursor:pointer;
+cursor:pointer;
 }
 
 .app{
-  width:100%;
-  min-height:100vh;
+max-width:1180px;
+margin:auto;
+padding:18px;
 }
 
-/* HEADER */
-
 header{
-  height:68px;
-  padding:0 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:#0d111b;
-  border-bottom:1px solid #252b3a;
-  position:sticky;
-  top:0;
-  z-index:20;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:8px 0 18px;
 }
 
 .logo{
-  font-size:21px;
-  font-weight:800;
+font-weight:900;
+font-size:21px;
 }
 
 .logo span{
-  color:#765cff;
-}
-
-.header-status{
-  color:#9da5ba;
-  font-size:13px;
-}
-
-/* MAIN */
-
-.main{
-  max-width:1200px;
-  margin:auto;
-  padding:25px 16px 50px;
-}
-
-.hero{
-  text-align:center;
-  padding:25px 10px;
-}
-
-.hero h1{
-  margin:0 0 10px;
-  font-size:34px;
-}
-
-.hero p{
-  color:#9da5ba;
-  margin:0;
-}
-
-/* GENERATOR */
-
-.generator{
-  background:#101624;
-  border:1px solid #293148;
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 15px 50px rgba(0,0,0,.25);
-}
-
-.label{
-  display:block;
-  margin-bottom:9px;
-  font-weight:700;
-}
-
-textarea{
-  width:100%;
-  min-height:145px;
-  resize:vertical;
-  padding:16px;
-  border-radius:12px;
-  border:1px solid #30384e;
-  background:#080c15;
-  color:#fff;
-  outline:none;
-}
-
-textarea:focus{
-  border-color:#765cff;
-}
-
-.examples{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:12px 0 20px;
-}
-
-.example{
-  background:#171e2e;
-  border:1px solid #30384e;
-  color:#cdd3e3;
-  padding:8px 12px;
-  border-radius:9px;
-  font-size:13px;
-}
-
-.example:active{
-  transform:scale(.97);
-}
-
-.create{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:16px;
-  background:linear-gradient(135deg,#765cff,#5e78ff);
-  color:white;
-  font-weight:800;
-  font-size:17px;
-}
-
-.create:active{
-  transform:scale(.99);
-}
-
-/* GENRES */
-
-.section-title{
-  margin:28px 0 12px;
-  font-size:20px;
-}
-
-.genres{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-}
-
-.genre{
-  padding:13px 8px;
-  border-radius:11px;
-  background:#101624;
-  border:1px solid #293148;
-  color:#cdd3e3;
-  text-align:center;
-}
-
-.genre.active{
-  border-color:#765cff;
-  background:#17142c;
-  color:#fff;
-}
-
-/* PROJECT */
-
-.project{
-  display:none;
-  margin-top:28px;
-}
-
-.project.visible{
-  display:block;
-}
-
-.project-info{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:12px;
-}
-
-.project-title{
-  font-size:22px;
-  font-weight:800;
+color:#7d75ff;
 }
 
 .badge{
-  padding:7px 11px;
-  border-radius:20px;
-  background:#25203e;
-  color:#a99bff;
-  font-size:13px;
+font-size:12px;
+color:#bfc7ff;
+border:1px solid #4039a8;
+background:#171735;
+border-radius:999px;
+padding:6px 10px;
 }
 
-.workspace{
-  display:grid;
-  grid-template-columns:1fr 320px;
-  gap:14px;
+.layout{
+display:grid;
+grid-template-columns:1fr 390px;
+gap:16px;
 }
 
-/* GAME */
-
-.game-container{
-  background:#05070b;
-  border:1px solid #293148;
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
+.panel{
+background:rgba(16,22,34,.92);
+border:1px solid var(--line);
+border-radius:18px;
+padding:18px;
+box-shadow:0 18px 50px #0005;
 }
 
-canvas{
-  display:block;
-  width:100%;
-  aspect-ratio:16/9;
-  background:#101827;
+h1{
+font-size:30px;
+margin:0 0 8px;
 }
 
-.game-top{
-  height:45px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 13px;
-  background:#0c1019;
-  border-bottom:1px solid #242b3b;
-  font-size:13px;
+h2{
+font-size:17px;
+margin:0 0 10px;
 }
 
-.game-message{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  pointer-events:none;
+p{
+color:var(--muted);
+line-height:1.5;
 }
 
-.game-message h2{
-  margin:0 0 7px;
+label{
+display:block;
+font-size:13px;
+font-weight:700;
+margin:16px 0 7px;
 }
 
-.game-message p{
-  margin:0;
-  color:#adb5c9;
+textarea,
+input,
+select{
+width:100%;
+color:var(--text);
+background:#0b101b;
+border:1px solid #303a53;
+border-radius:12px;
+padding:13px;
+outline:none;
 }
 
-/* SIDE */
-
-.side{
-  background:#101624;
-  border:1px solid #293148;
-  border-radius:16px;
-  padding:17px;
+textarea{
+min-height:132px;
+resize:vertical;
 }
 
-.side h3{
-  margin:0 0 14px;
+textarea:focus,
+input:focus,
+select:focus{
+border-color:var(--accent);
 }
 
-.stat{
-  padding:12px;
-  border-radius:10px;
-  background:#0b101a;
-  margin-bottom:8px;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
-.stat small{
-  display:block;
-  color:#8f98ad;
-  margin-bottom:4px;
+.choices{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px;
 }
 
-.control{
-  margin-top:17px;
+.choice{
+border:1px solid #303a53;
+background:#0c121e;
+border-radius:12px;
+padding:11px;
+text-align:left;
+color:var(--text);
 }
 
-.control button{
-  width:100%;
-  border:1px solid #343d54;
-  background:#171e2d;
-  color:#fff;
-  border-radius:10px;
-  padding:11px;
-  margin-top:7px;
+.choice.active{
+border-color:var(--accent);
+background:#171537;
+box-shadow:0 0 0 1px #6c63ff33 inset;
 }
 
-/* MOBILE CONTROLS */
-
-.mobile-controls{
-  display:none;
-  margin-top:10px;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  max-width:300px;
-  margin-left:auto;
-  margin-right:auto;
+.choice small{
+display:block;
+color:var(--muted);
+margin-top:3px;
 }
 
-.mobile-controls button{
-  height:55px;
-  border:1px solid #39435b;
-  background:#161d2c;
-  color:white;
-  border-radius:12px;
-  font-size:22px;
+.platforms{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 }
 
-.mobile-controls .empty{
-  visibility:hidden;
+.platform{
+border:1px solid #303a53;
+background:#0c121e;
+color:#dbe2f4;
+border-radius:999px;
+padding:9px 12px;
 }
 
-/* LOG */
-
-.log{
-  margin-top:14px;
-  padding:12px;
-  border-radius:11px;
-  background:#080c14;
-  color:#8f98ad;
-  font-size:13px;
-  min-height:42px;
+.platform.active{
+background:#26205d;
+border-color:var(--accent);
+color:#fff;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:800px){
-
-  .hero h1{
-    font-size:28px;
-  }
-
-  .genres{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .workspace{
-    grid-template-columns:1fr;
-  }
-
-  .mobile-controls{
-    display:grid;
-  }
-
-  .header-status{
-    display:none;
-  }
-
-  .main{
-    padding:15px 10px 35px;
-  }
-
-  .generator{
-    padding:15px;
-  }
+.primary{
+width:100%;
+border:0;
+border-radius:13px;
+background:linear-gradient(
+135deg,
+#6c63ff,
+#8b55ff
+);
+color:#fff;
+font-weight:900;
+padding:15px;
+margin-top:18px;
 }
 
-@media(min-width:801px){
-
-  .mobile-controls{
-    display:none;
-  }
+.secondary{
+border:1px solid #34405b;
+background:#121a29;
+color:#fff;
+border-radius:11px;
+padding:10px 13px;
 }
+
+.row{
+display:flex;
+gap:8px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.preview{
+min-height:470px;
+position:relative;
+overflow:hidden;
+background:#0a0f19;
+border:1px solid #2d3850;
+border-radius:16px;
+}
+
+.previewTop{
+padding:12px 14px;
+border-bottom:1px solid #29344a;
+display:flex;
+justify-content:space-between;
+color:#cbd5eb;
+}
+
+.gameCanvas{
+height:390px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.gameCard{
+width:min(92%,430px);
+border:1px solid #3a4560;
+border-radius:20px;
+background:
+linear-gradient(
+160deg,
+#171d2d,
+#0c111c
+);
+padding:24px;
+text-align:center;
+}
+
+.gameIcon{
+width:90px;
+height:90px;
+border-radius:22px;
+background:
+linear-gradient(
+135deg,
+#6c63ff,
+#d95cff
+);
+display:grid;
+place-items:center;
+font-size:42px;
+margin:0 auto 15px;
+}
+
+.gameTitle{
+font-size:25px;
+font-weight:900;
+}
+
+.gameDesc{
+color:#aeb9cf;
+font-size:14px;
+margin:8px 0 18px;
+}
+
+.play{
+border:0;
+border-radius:12px;
+background:#25d97a;
+color:#04140b;
+font-weight:900;
+padding:12px 20px;
+}
+
+.status{
+font-size:12px;
+color:#93a0b8;
+margin-top:12px;
+min-height:18px;
+}
+
+.result{
+margin-top:16px;
+display:none;
+}
+
+.result pre{
+white-space:pre-wrap;
+background:#090d15;
+border:1px solid #29344a;
+border-radius:12px;
+padding:13px;
+color:#cdd6e8;
+font-size:12px;
+max-height:260px;
+overflow:auto;
+}
+
+.quick{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:9px;
+}
+
+.quick button{
+border:1px solid #303a53;
+background:#111827;
+color:#cfd8eb;
+border-radius:999px;
+padding:7px 10px;
+font-size:12px;
+}
+
+.history{
+display:grid;
+gap:8px;
+}
+
+.historyItem{
+border:1px solid #29344a;
+border-radius:11px;
+padding:10px;
+background:#0c121e;
+}
+
+.historyItem b{
+display:block;
+}
+
+.historyItem span{
+color:#8997af;
+font-size:12px;
+}
+
+footer{
+text-align:center;
+color:#65728a;
+font-size:12px;
+padding:20px;
+}
+
+@media(max-width:850px){
+
+.layout{
+grid-template-columns:1fr;
+}
+
+.panel{
+padding:15px;
+}
+
+h1{
+font-size:25px;
+}
+
+.preview{
+min-height:400px;
+}
+
+.gameCanvas{
+height:320px;
+}
+
+}
+
+@media(max-width:520px){
+
+.grid,
+.choices{
+grid-template-columns:1fr 1fr;
+}
+
+.app{
+padding:10px;
+}
+
+.panel{
+border-radius:14px;
+}
+
+.gameCard{
+padding:18px;
+}
+
+.gameIcon{
+width:72px;
+height:72px;
+font-size:34px;
+}
+
+}
+
 </style>
 </head>
 
@@ -390,739 +424,1199 @@ canvas{
 <div class="app">
 
 <header>
-  <div class="logo">🎮 <span>AI</span> Game Studio</div>
-  <div class="header-status">Создание игр по описанию</div>
+
+<div class="logo">
+✦ <span>AI</span> Game Studio
+</div>
+
+<div class="badge">
+Создание игр
+</div>
+
 </header>
 
-<main class="main">
 
-<section class="hero">
-  <h1>Создай свою игру</h1>
-  <p>Опиши идею обычными словами — студия создаст игровой прототип.</p>
+<div class="layout">
+
+<main>
+
+<section class="panel">
+
+<h1>
+Создай игру по описанию
+</h1>
+
+<p>
+Напиши идею обычными словами.
+Выбери жанр и устройства —
+студия создаст структуру игры
+и интерактивный прототип.
+</p>
+
+
+<label for="prompt">
+Что должна делать игра?
+</label>
+
+<textarea
+id="prompt"
+placeholder="Например: хоррор от первого лица, игрок исследует заброшенную больницу ночью, собирает предметы и прячется от монстра..."
+></textarea>
+
+
+<div class="quick">
+
+<button onclick="setPrompt(
+'Выживание в открытом мире с крафтом и опасными врагами'
+)">
+Выживание
+</button>
+
+<button onclick="setPrompt(
+'Хоррор от первого лица в заброшенной больнице'
+)">
+Хоррор
+</button>
+
+<button onclick="setPrompt(
+'Гонки по городу с тюнингом машин'
+)">
+Гонки
+</button>
+
+<button onclick="setPrompt(
+'RPG с прокачкой героя, оружием, квестами и боссами'
+)">
+RPG
+</button>
+
+</div>
+
+
+<label>
+Жанр
+</label>
+
+<div
+class="choices"
+id="genres"
+></div>
+
+
+<label>
+Для каких устройств?
+</label>
+
+<div
+class="platforms"
+id="platforms"
+></div>
+
+
+<div class="grid">
+
+<div>
+
+<label for="style">
+Графика
+</label>
+
+<select id="style">
+
+<option>
+3D реалистичная
+</option>
+
+<option>
+3D стилизованная
+</option>
+
+<option>
+2D мультяшная
+</option>
+
+<option>
+2D пиксельная
+</option>
+
+<option>
+Минималистичная
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="camera">
+Камера
+</label>
+
+<select id="camera">
+
+<option>
+От первого лица
+</option>
+
+<option>
+От третьего лица
+</option>
+
+<option>
+Вид сверху
+</option>
+
+<option>
+Сбоку
+</option>
+
+<option>
+Изометрия
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<button
+class="primary"
+onclick="generateGame()"
+>
+
+✨ СОЗДАТЬ ИГРУ
+
+</button>
+
+
+<div
+class="status"
+id="status"
+></div>
+
+
+<div
+class="result"
+id="result"
+>
+
+<h2>
+Сгенерированная структура
+</h2>
+
+<pre id="resultText"></pre>
+
+
+<div class="row">
+
+<button
+class="secondary"
+onclick="downloadGame()"
+>
+⬇️ Скачать HTML-прототип
+</button>
+
+<button
+class="secondary"
+onclick="copyResult()"
+>
+Копировать
+</button>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="generator">
 
-  <label class="label" for="prompt">
-    🧠 Опиши игру
-  </label>
+<section
+class="panel"
+style="margin-top:16px"
+>
 
-  <textarea id="prompt"
-    placeholder="Например: Сделай хоррор от первого лица в заброшенной больнице. Игрок должен найти ключи и убежать от монстра."></textarea>
+<h2>
+Последние проекты
+</h2>
 
-  <div class="examples">
-    <button class="example"
-      onclick="setExample('Хоррор от первого лица в заброшенной больнице. Найди ключ и убеги от монстра.')">
-      👻 Хоррор
-    </button>
+<div
+class="history"
+id="history"
+>
 
-    <button class="example"
-      onclick="setExample('Сделай гонки на спортивных машинах по ночному городу.')">
-      🏎️ Гонки
-    </button>
+<div class="historyItem">
 
-    <button class="example"
-      onclick="setExample('RPG приключение с мечом, монстрами, сундуками и прокачкой героя.')">
-      ⚔️ RPG
-    </button>
+<b>
+Пока нет проектов
+</b>
 
-    <button class="example"
-      onclick="setExample('Игра на выживание на необитаемом острове. Собирай ресурсы и строй укрытие.')">
-      🏝️ Выживание
-    </button>
-  </div>
+<span>
+Создай первую игру выше
+</span>
 
-  <button class="create" onclick="createGame()">
-    ✨ Создать игру
-  </button>
+</div>
 
-</section>
-
-<h2 class="section-title">Жанры</h2>
-
-<section class="genres" id="genres">
-
-  <button class="genre" data-genre="shooter">🔫 Шутер</button>
-  <button class="genre" data-genre="horror">👻 Хоррор</button>
-  <button class="genre" data-genre="rpg">⚔️ RPG</button>
-  <button class="genre" data-genre="racing">🏎️ Гонки</button>
-
-  <button class="genre" data-genre="survival">🏝️ Выживание</button>
-  <button class="genre" data-genre="platformer">🪜 Платформер</button>
-  <button class="genre" data-genre="strategy">🏰 Стратегия</button>
-  <button class="genre" data-genre="arcade">👾 Аркада</button>
-
-  <button class="genre" data-genre="adventure">🗺️ Приключение</button>
-  <button class="genre" data-genre="simulator">🏗️ Симулятор</button>
-  <button class="genre" data-genre="fighting">🥊 Файтинг</button>
-  <button class="genre" data-genre="sports">⚽ Спорт</button>
-
-  <button class="genre" data-genre="tower">🏹 Tower Defense</button>
-  <button class="genre" data-genre="puzzle">🧩 Головоломка</button>
-  <button class="genre" data-genre="tycoon">🏪 Tycoon</button>
-  <button class="genre" data-genre="clicker">🖱️ Кликер</button>
-
-</section>
-
-<section class="project" id="project">
-
-  <div class="project-info">
-    <div>
-      <div class="project-title" id="projectTitle">
-        Новая игра
-      </div>
-    </div>
-
-    <div class="badge" id="genreBadge">
-      Жанр
-    </div>
-  </div>
-
-  <div class="workspace">
-
-    <div class="game-container">
-
-      <div class="game-top">
-        <span id="gameName">Игра</span>
-        <span id="gameScore">Очки: 0</span>
-      </div>
-
-      <canvas id="game" width="960" height="540"></canvas>
-
-      <div class="game-message" id="message">
-        <h2 id="messageTitle">Игра создана</h2>
-        <p id="messageText">Используй управление ниже</p>
-      </div>
-
-      <div class="mobile-controls">
-
-        <button class="empty">•</button>
-        <button ontouchstart="press('up')" ontouchend="release('up')">⬆️</button>
-        <button class="empty">•</button>
-
-        <button ontouchstart="press('left')" ontouchend="release('left')">⬅️</button>
-        <button ontouchstart="press('down')" ontouchend="release('down')">⬇️</button>
-        <button ontouchstart="press('right')" ontouchend="release('right')">➡️</button>
-
-      </div>
-
-    </div>
-
-    <aside class="side">
-
-      <h3>🎮 Параметры игры</h3>
-
-      <div class="stat">
-        <small>Название</small>
-        <span id="statName">—</span>
-      </div>
-
-      <div class="stat">
-        <small>Жанр</small>
-        <span id="statGenre">—</span>
-      </div>
-
-      <div class="stat">
-        <small>Цель</small>
-        <span id="statGoal">—</span>
-      </div>
-
-      <div class="stat">
-        <small>Управление</small>
-        <span>⌨️ WASD / стрелки / телефон</span>
-      </div>
-
-      <div class="control">
-
-        <button onclick="restartGame()">
-          🔄 Перезапустить
-        </button>
-
-        <button onclick="newGame()">
-          ➕ Новая игра
-        </button>
-
-      </div>
-
-      <div class="log" id="log">
-        Готово к созданию игры.
-      </div>
-
-    </aside>
-
-  </div>
+</div>
 
 </section>
 
 </main>
+
+
+<aside class="panel">
+
+<h2>
+Предпросмотр
+</h2>
+
+
+<div class="preview">
+
+<div class="previewTop">
+
+<span id="previewGenre">
+Новая игра
+</span>
+
+<span id="previewPlatform">
+WEB
+</span>
+
 </div>
+
+
+<div class="gameCanvas">
+
+<div class="gameCard">
+
+<div
+class="gameIcon"
+id="gameIcon"
+>
+🎮
+</div>
+
+
+<div
+class="gameTitle"
+id="gameTitle"
+>
+Твоя игра
+</div>
+
+
+<div
+class="gameDesc"
+id="gameDesc"
+>
+Здесь появится прототип по твоему запросу.
+</div>
+
+
+<button
+class="play"
+onclick="demoPlay()"
+>
+▶ Играть
+</button>
+
+
+<div
+class="status"
+id="demoStatus"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<p style="font-size:12px">
+
+Это редактор-прототип.
+Он работает прямо на GitHub Pages
+без ключей API.
+
+Для настоящей генерации сложных игр
+через нейросеть позже подключим
+AI-модуль.
+
+</p>
+
+</aside>
+
+</div>
+
+
+<footer>
+
+AI Game Studio · конструктор игр
+
+</footer>
+
+</div>
+
 
 <script>
 
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
 
-const promptEl = document.getElementById("prompt");
+const genres=[
 
-let game = {
-  running:false,
-  genre:"arcade",
-  title:"Новая игра",
-  goal:"Собери как можно больше предметов",
-  score:0,
-  player:{
-    x:480,
-    y:270,
-    size:24,
-    speed:4
-  },
-  objects:[],
-  enemies:[]
+['Экшен','💥'],
+
+['Приключение','🗺️'],
+
+['RPG','⚔️'],
+
+['Шутер','🔫'],
+
+['Хоррор','👻'],
+
+['Выживание','🏕️'],
+
+['Стратегия','♟️'],
+
+['Симулятор','🏗️'],
+
+['Гонки','🏎️'],
+
+['Платформер','🕹️'],
+
+['Кликер','👆'],
+
+['Аркада','🕹️'],
+
+['Файтинг','🥊'],
+
+['Стелс','🥷'],
+
+['Спорт','⚽'],
+
+['Головоломка','🧩'],
+
+['Tower Defense','🏰'],
+
+['Карточная','🃏'],
+
+['Настольная','🎲'],
+
+['Визуальная новелла','💬']
+
+];
+
+
+const platformData=[
+
+['📱 Телефон','phone'],
+
+['🖥️ ПК','pc'],
+
+['🌐 Браузер','web'],
+
+['📟 Планшет','tablet']
+
+];
+
+
+let selectedGenre='Экшен';
+
+let selectedPlatforms=[
+'phone',
+'pc',
+'web'
+];
+
+let lastGame=null;
+
+
+const genresEl=
+document.getElementById(
+'genres'
+);
+
+
+genres.forEach(
+([name,icon],i)=>{
+
+const b=
+document.createElement(
+'button'
+);
+
+b.className=
+'choice'+
+(i===0?' active':'');
+
+b.innerHTML=
+icon+
+' '+
+name+
+'<small>'+
+'создать такой проект'+
+'</small>';
+
+b.onclick=()=>{
+
+document
+.querySelectorAll(
+'.choice'
+)
+.forEach(
+x=>
+x.classList.remove(
+'active'
+)
+);
+
+b.classList.add(
+'active'
+);
+
+selectedGenre=name;
+
+updatePreview();
+
 };
 
-const keys = {
-  up:false,
-  down:false,
-  left:false,
-  right:false
-};
-
-const genreNames = {
-  shooter:"Шутер",
-  horror:"Хоррор",
-  rpg:"RPG",
-  racing:"Гонки",
-  survival:"Выживание",
-  platformer:"Платформер",
-  strategy:"Стратегия",
-  arcade:"Аркада",
-  adventure:"Приключение",
-  simulator:"Симулятор",
-  fighting:"Файтинг",
-  sports:"Спорт",
-  tower:"Tower Defense",
-  puzzle:"Головоломка",
-  tycoon:"Tycoon",
-  clicker:"Кликер"
-};
-
-const genreGoals = {
-  shooter:"Уничтожай врагов",
-  horror:"Найди выход и избегай монстра",
-  rpg:"Исследуй мир и побеждай врагов",
-  racing:"Доберись до финиша",
-  survival:"Собирай ресурсы и выживай",
-  platformer:"Доберись до конца уровня",
-  strategy:"Защити свою базу",
-  arcade:"Набери максимальное количество очков",
-  adventure:"Исследуй мир и найди цель",
-  simulator:"Выполняй игровые действия",
-  fighting:"Победи противника",
-  sports:"Набери больше очков",
-  tower:"Не дай врагам пройти",
-  puzzle:"Реши игровую задачу",
-  tycoon:"Развивай свою компанию",
-  clicker:"Зарабатывай очки нажатием"
-};
-
-function setExample(text){
-  promptEl.value = text;
-  promptEl.focus();
-}
-
-function detectGenre(text){
-
-  const t = text.toLowerCase();
-
-  if(
-    t.includes("хоррор") ||
-    t.includes("ужас") ||
-    t.includes("страш") ||
-    t.includes("монстр") ||
-    t.includes("зомби")
-  ) return "horror";
-
-  if(
-    t.includes("гонк") ||
-    t.includes("машин") ||
-    t.includes("автомобил") ||
-    t.includes("тачк") ||
-    t.includes("race")
-  ) return "racing";
-
-  if(
-    t.includes("шутер") ||
-    t.includes("стрел") ||
-    t.includes("оруж") ||
-    t.includes("пистолет") ||
-    t.includes("винтов")
-  ) return "shooter";
-
-  if(
-    t.includes("rpg") ||
-    t.includes("рпг") ||
-    t.includes("меч") ||
-    t.includes("герой") ||
-    t.includes("прокач")
-  ) return "rpg";
-
-  if(
-    t.includes("выжив") ||
-    t.includes("остров") ||
-    t.includes("ресурс") ||
-    t.includes("крафт") ||
-    t.includes("survival")
-  ) return "survival";
-
-  if(
-    t.includes("платформ") ||
-    t.includes("прыж") ||
-    t.includes("platform")
-  ) return "platformer";
-
-  if(
-    t.includes("стратег") ||
-    t.includes("база") ||
-    t.includes("арм") ||
-    t.includes("tower defense")
-  ) return "strategy";
-
-  if(
-    t.includes("спорт") ||
-    t.includes("футбол") ||
-    t.includes("баскетбол") ||
-    t.includes("хоккей")
-  ) return "sports";
-
-  if(
-    t.includes("симулятор") ||
-    t.includes("симуляц")
-  ) return "simulator";
-
-  if(
-    t.includes("файтинг") ||
-    t.includes("драка") ||
-    t.includes("бой")
-  ) return "fighting";
-
-  if(
-    t.includes("головолом") ||
-    t.includes("пазл") ||
-    t.includes("логичес")
-  ) return "puzzle";
-
-  if(
-    t.includes("магазин") ||
-    t.includes("бизнес") ||
-    t.includes("компан") ||
-    t.includes("тайкун")
-  ) return "tycoon";
-
-  if(
-    t.includes("приключ") ||
-    t.includes("исслед")
-  ) return "adventure";
-
-  if(
-    t.includes("клик") ||
-    t.includes("нажим")
-  ) return "clicker";
-
-  return "arcade";
-}
-
-function generateTitle(text, genre){
-
-  const words = text
-    .replace(/[.!?,:;]/g,"")
-    .split(/\s+/)
-    .filter(Boolean);
-
-  if(words.length > 0){
-    const important = words
-      .filter(w => w.length > 4)
-      .slice(0,3)
-      .join(" ");
-
-    if(important){
-      return important.charAt(0).toUpperCase()+important.slice(1);
-    }
-  }
-
-  return genreNames[genre];
-}
-
-function createGame(){
-
-  const text = promptEl.value.trim();
-
-  if(!text){
-    alert("Сначала опиши игру.");
-    return;
-  }
-
-  const genre = detectGenre(text);
-
-  game.genre = genre;
-  game.title = generateTitle(text,genre);
-  game.goal = genreGoals[genre];
-  game.score = 0;
-
-  document.getElementById("project").classList.add("visible");
-
-  document.getElementById("projectTitle").textContent = game.title;
-  document.getElementById("gameName").textContent = game.title;
-  document.getElementById("genreBadge").textContent = genreNames[genre];
-
-  document.getElementById("statName").textContent = game.title;
-  document.getElementById("statGenre").textContent = genreNames[genre];
-  document.getElementById("statGoal").textContent = game.goal;
-
-  document.getElementById("messageTitle").textContent =
-    "🎮 Игра создана";
-
-  document.getElementById("messageText").textContent =
-    genreNames[genre] + " • " + game.goal;
-
-  document.getElementById("log").textContent =
-    "Генератор обработал описание и создал прототип.";
-
-  document.querySelectorAll(".genre").forEach(el=>{
-    el.classList.toggle(
-      "active",
-      el.dataset.genre === genre
-    );
-  });
-
-  restartGame();
-}
-
-function restartGame(){
-
-  game.score = 0;
-
-  game.player = {
-    x:canvas.width/2,
-    y:canvas.height/2,
-    size:24,
-    speed:4
-  };
-
-  game.objects=[];
-  game.enemies=[];
-
-  for(let i=0;i<8;i++){
-
-    game.objects.push({
-      x:40+Math.random()*(canvas.width-80),
-      y:70+Math.random()*(canvas.height-120),
-      size:14
-    });
-
-  }
-
-  for(let i=0;i<3;i++){
-
-    game.enemies.push({
-      x:50+Math.random()*(canvas.width-100),
-      y:80+Math.random()*(canvas.height-140),
-      size:24,
-      speed:1+Math.random()*1.3
-    });
-
-  }
-
-  game.running=true;
-
-  document.getElementById("message").style.display="none";
-
-  updateScore();
-
-  requestAnimationFrame(loop);
-}
-
-function newGame(){
-
-  document.getElementById("project").classList.remove("visible");
-
-  promptEl.value="";
-  promptEl.focus();
-
-  game.running=false;
-}
-
-function updateScore(){
-
-  document.getElementById("gameScore").textContent =
-    "Очки: " + game.score;
-}
-
-/* KEYBOARD */
-
-window.addEventListener("keydown",e=>{
-
-  if(e.key==="ArrowUp" || e.key.toLowerCase()==="w")
-    keys.up=true;
-
-  if(e.key==="ArrowDown" || e.key.toLowerCase()==="s")
-    keys.down=true;
-
-  if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a")
-    keys.left=true;
-
-  if(e.key==="ArrowRight" || e.key.toLowerCase()==="d")
-    keys.right=true;
+genresEl.appendChild(b);
 
 });
 
-window.addEventListener("keyup",e=>{
 
-  if(e.key==="ArrowUp" || e.key.toLowerCase()==="w")
-    keys.up=false;
+const platformsEl=
+document.getElementById(
+'platforms'
+);
 
-  if(e.key==="ArrowDown" || e.key.toLowerCase()==="s")
-    keys.down=false;
 
-  if(e.key==="ArrowLeft" || e.key.toLowerCase()==="a")
-    keys.left=false;
+platformData.forEach(
+([name,id])=>{
 
-  if(e.key==="ArrowRight" || e.key.toLowerCase()==="d")
-    keys.right=false;
+const b=
+document.createElement(
+'button'
+);
+
+b.className=
+'platform'+
+(
+selectedPlatforms.includes(id)
+?' active'
+:''
+);
+
+b.textContent=name;
+
+b.onclick=()=>{
+
+if(
+selectedPlatforms.includes(id)
+){
+
+if(
+selectedPlatforms.length>1
+){
+
+selectedPlatforms=
+selectedPlatforms.filter(
+x=>x!==id
+);
+
+}
+
+}else{
+
+selectedPlatforms.push(id);
+
+}
+
+b.classList.toggle(
+'active'
+);
+
+updatePreview();
+
+};
+
+platformsEl.appendChild(b);
 
 });
 
-/* MOBILE */
 
-function press(direction){
-  keys[direction]=true;
-}
+function setPrompt(v){
 
-function release(direction){
-  keys[direction]=false;
-}
+document.getElementById(
+'prompt'
+).value=v;
 
-/* GAME LOOP */
-
-function loop(){
-
-  if(!game.running) return;
-
-  update();
-  draw();
-
-  requestAnimationFrame(loop);
-}
-
-function update(){
-
-  const p=game.player;
-
-  if(keys.up) p.y-=p.speed;
-  if(keys.down) p.y+=p.speed;
-  if(keys.left) p.x-=p.speed;
-  if(keys.right) p.x+=p.speed;
-
-  p.x=Math.max(p.size/2,
-    Math.min(canvas.width-p.size/2,p.x));
-
-  p.y=Math.max(60,
-    Math.min(canvas.height-p.size/2,p.y));
-
-  /* collect */
-
-  game.objects.forEach((o,index)=>{
-
-    const d=Math.hypot(
-      p.x-o.x,
-      p.y-o.y
-    );
-
-    if(d < p.size+o.size){
-
-      game.score+=10;
-
-      game.objects[index]={
-        x:40+Math.random()*(canvas.width-80),
-        y:80+Math.random()*(canvas.height-120),
-        size:14
-      };
-
-      updateScore();
-    }
-
-  });
-
-  /* enemies */
-
-  if(
-    game.genre==="horror" ||
-    game.genre==="shooter" ||
-    game.genre==="rpg" ||
-    game.genre==="survival"
-  ){
-
-    game.enemies.forEach(enemy=>{
-
-      const dx=p.x-enemy.x;
-      const dy=p.y-enemy.y;
-
-      const distance=Math.hypot(dx,dy);
-
-      if(distance>1){
-
-        enemy.x += dx/distance*enemy.speed;
-        enemy.y += dy/distance*enemy.speed;
-
-      }
-
-      if(distance < p.size+enemy.size){
-
-        game.score=Math.max(0,game.score-5);
-        updateScore();
-
-        p.x=canvas.width/2;
-        p.y=canvas.height/2;
-
-      }
-
-    });
-
-  }
+updatePreview();
 
 }
 
-function draw(){
 
-  ctx.clearRect(
-    0,0,
-    canvas.width,
-    canvas.height
-  );
+function inferGenre(text){
 
-  /* background */
+const t=
+text.toLowerCase();
 
-  const gradient=ctx.createLinearGradient(
-    0,0,
-    0,canvas.height
-  );
+const map=[
 
-  gradient.addColorStop(0,"#111a2a");
-  gradient.addColorStop(1,"#07100e");
+['хоррор','Хоррор'],
 
-  ctx.fillStyle=gradient;
-  ctx.fillRect(
-    0,0,
-    canvas.width,
-    canvas.height
-  );
+['ужас','Хоррор'],
 
-  /* grid */
+['гонк','Гонки'],
 
-  ctx.strokeStyle="rgba(255,255,255,.04)";
-  ctx.lineWidth=1;
+['rpg','RPG'],
 
-  for(let x=0;x<canvas.width;x+=40){
+['рпг','RPG'],
 
-    ctx.beginPath();
-    ctx.moveTo(x,50);
-    ctx.lineTo(x,canvas.height);
-    ctx.stroke();
+['шутер','Шутер'],
 
-  }
+['выжив','Выживание'],
 
-  for(let y=60;y<canvas.height;y+=40){
+['стратег','Стратегия'],
 
-    ctx.beginPath();
-    ctx.moveTo(0,y);
-    ctx.lineTo(canvas.width,y);
-    ctx.stroke();
+['платформ','Платформер'],
 
-  }
+['кликер','Кликер'],
 
-  /* objects */
+['спорт','Спорт'],
 
-  game.objects.forEach(o=>{
+['головолом','Головоломка'],
 
-    ctx.beginPath();
-    ctx.arc(o.x,o.y,o.size,0,Math.PI*2);
+['файтинг','Файтинг'],
 
-    ctx.fillStyle="#ffd34d";
-    ctx.fill();
+['стелс','Стелс'],
 
-  });
+['симулятор','Симулятор'],
 
-  /* enemies */
+['приключ','Приключение']
 
-  game.enemies.forEach(enemy=>{
+];
 
-    ctx.fillStyle =
-      game.genre==="horror"
-      ? "#e44962"
-      : "#ff5b4d";
 
-    ctx.beginPath();
+for(
+const [k,v]
+of map
+){
 
-    ctx.arc(
-      enemy.x,
-      enemy.y,
-      enemy.size,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fill();
-
-  });
-
-  /* player */
-
-  const p=game.player;
-
-  ctx.fillStyle="#765cff";
-
-  ctx.beginPath();
-
-  ctx.arc(
-    p.x,
-    p.y,
-    p.size,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
-  ctx.strokeStyle="#ffffff";
-  ctx.lineWidth=3;
-  ctx.stroke();
+if(
+t.includes(k)
+)return v;
 
 }
 
-/* GENRE BUTTONS */
+return selectedGenre;
 
-document.querySelectorAll(".genre").forEach(button=>{
+}
 
-  button.addEventListener("click",()=>{
 
-    const genre=button.dataset.genre;
+function updatePreview(){
 
-    const text =
-      "Создай игру жанра " +
-      genreNames[genre] +
-      ". " +
-      genreGoals[genre] +
-      ".";
+document.getElementById(
+'previewGenre'
+).textContent=
+selectedGenre;
 
-    promptEl.value=text;
 
-    document.querySelectorAll(".genre")
-      .forEach(x=>x.classList.remove("active"));
+document.getElementById(
+'previewPlatform'
+).textContent=
+selectedPlatforms
+.join(' · ')
+.toUpperCase();
 
-    button.classList.add("active");
 
-  });
+const p=
+document
+.getElementById(
+'prompt'
+)
+.value
+.trim();
 
-});
+
+document.getElementById(
+'gameDesc'
+).textContent=
+p||
+'Здесь появится прототип по твоему запросу.';
+
+}
+
+
+function generateGame(){
+
+const prompt=
+document
+.getElementById(
+'prompt'
+)
+.value
+.trim();
+
+
+if(!prompt){
+
+document.getElementById(
+'status'
+).textContent=
+'Сначала опиши идею игры.';
+
+return;
+
+}
+
+
+const genre=
+inferGenre(prompt);
+
+selectedGenre=genre;
+
+
+document
+.querySelectorAll(
+'.choice'
+)
+.forEach(
+b=>
+b.classList.toggle(
+'active',
+b.textContent.includes(
+genre
+)
+)
+);
+
+
+const title=
+makeTitle(
+prompt,
+genre
+);
+
+
+const controls=
+selectedPlatforms.includes(
+'phone'
+)
+?
+'сенсорное управление'
+:
+selectedPlatforms.includes(
+'pc'
+)
+?
+'клавиатура и мышь'
+:
+'управление указателями';
+
+
+const features=
+featuresFor(
+genre,
+prompt
+);
+
+
+lastGame={
+
+title:title,
+
+genre:genre,
+
+prompt:prompt,
+
+platforms:[
+...selectedPlatforms
+],
+
+style:
+document.getElementById(
+'style'
+).value,
+
+camera:
+document.getElementById(
+'camera'
+).value,
+
+controls:controls,
+
+features:features
+
+};
+
+
+document.getElementById(
+'gameTitle'
+).textContent=
+title;
+
+
+document.getElementById(
+'gameDesc'
+).textContent=
+prompt;
+
+
+document.getElementById(
+'gameIcon'
+).textContent=
+genres.find(
+x=>x[0]===genre
+)?.[1]||
+'🎮';
+
+
+document.getElementById(
+'previewGenre'
+).textContent=
+genre;
+
+
+document.getElementById(
+'resultText'
+).textContent=
+JSON.stringify(
+lastGame,
+null,
+2
+);
+
+
+document.getElementById(
+'result'
+).style.display=
+'block';
+
+
+document.getElementById(
+'status'
+).textContent=
+'✓ Игра создана: структура и прототип готовы.';
+
+
+addHistory(
+title,
+genre
+);
+
+}
+
+
+function makeTitle(
+prompt,
+genre
+){
+
+const words=
+prompt
+.replace(
+/[^\p{L}\p{N}\s-]/gu,
+''
+)
+.trim()
+.split(/\s+/)
+.filter(Boolean);
+
+
+let base=
+words
+.slice(0,4)
+.join(' ');
+
+
+if(
+!base||
+base.length<3
+){
+
+base='Новая игра';
+
+}
+
+
+return
+base.charAt(0)
+.toUpperCase()
++
+base.slice(1);
+
+}
+
+
+function featuresFor(
+g,
+p
+){
+
+const base={
+
+Экшен:[
+'бой',
+'враги',
+'здоровье',
+'уровни'
+],
+
+Приключение:[
+'исследование',
+'квесты',
+'предметы',
+'диалоги'
+],
+
+RPG:[
+'герой',
+'опыт',
+'уровни',
+'инвентарь',
+'квесты'
+],
+
+Шутер:[
+'оружие',
+'боеприпасы',
+'враги',
+'прицел'
+],
+
+Хоррор:[
+'исследование',
+'фонарик',
+'прятки',
+'монстр'
+],
+
+Выживание:[
+'голод',
+'ресурсы',
+'крафт',
+'опасности'
+],
+
+Стратегия:[
+'ресурсы',
+'строительство',
+'отряды',
+'тактика'
+],
+
+Симулятор:[
+'ресурсы',
+'экономика',
+'улучшения',
+'задачи'
+],
+
+Гонки:[
+'машина',
+'трасса',
+'скорость',
+'тюнинг'
+],
+
+Платформер:[
+'прыжки',
+'уровни',
+'ловушки',
+'монеты'
+],
+
+Кликер:[
+'нажатия',
+'улучшения',
+'пассивный доход',
+'достижения'
+],
+
+Аркада:[
+'очки',
+'комбо',
+'бонусы',
+'рекорды'
+],
+
+Файтинг:[
+'атака',
+'защита',
+'комбо',
+'арена'
+],
+
+Стелс:[
+'скрытность',
+'патрули',
+'предметы',
+'сигнализация'
+],
+
+Спорт:[
+'матч',
+'очки',
+'физика',
+'турнир'
+],
+
+Головоломка:[
+'уровни',
+'логика',
+'подсказки',
+'таймер'
+],
+
+'Tower Defense':[
+'башни',
+'волны врагов',
+'улучшения',
+'босс'
+],
+
+Карточная:[
+'карты',
+'колода',
+'эффекты',
+'матчи'
+],
+
+Настольная:[
+'поле',
+'фишки',
+'правила',
+'ходы'
+],
+
+'Визуальная новелла':[
+'диалоги',
+'выборы',
+'ветки сюжета',
+'персонажи'
+]
+
+}[g]||
+[
+'уровни',
+'очки',
+'препятствия',
+'награды'
+];
+
+
+return[
+...base,
+
+...(
+p
+.toLowerCase()
+.includes(
+'мультиплеер'
+)
+?
+['мультиплеер']
+:
+[]
+)
+
+];
+
+}
+
+
+function addHistory(
+title,
+genre
+){
+
+const h=
+document.getElementById(
+'history'
+);
+
+
+if(
+h.children.length===1&&
+h.children[0]
+.textContent
+.includes(
+'Пока нет'
+)
+){
+
+h.innerHTML='';
+
+}
+
+
+const d=
+document.createElement(
+'div'
+);
+
+d.className=
+'historyItem';
+
+
+d.innerHTML=
+'<b>'+
+escapeHtml(title)+
+'</b>'+
+'<span>'+
+genre+
+' · '+
+selectedPlatforms.join(
+', '
+)+
+'</span>';
+
+
+h.prepend(d);
+
+}
+
+
+function escapeHtml(s){
+
+return s.replace(
+/[&<>"']/g,
+m=>
+({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[m])
+);
+
+}
+
+
+function demoPlay(){
+
+document.getElementById(
+'demoStatus'
+).textContent=
+'🎮 Прототип запущен — здесь можно расширять механику игры.';
+
+}
+
+
+function copyResult(){
+
+if(lastGame){
+
+navigator.clipboard?.writeText(
+JSON.stringify(
+lastGame,
+null,
+2
+)
+);
+
+}
+
+}
+
+
+function downloadGame(){
+
+if(!lastGame)return;
+
+
+const safe=
+lastGame.title.replace(
+/[^\p{L}\p{N}_-]+/gu,
+'_'
+);
+
+
+const doc=
+'<!doctype html>'+
+'<html lang="ru">'+
+'<meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<title>'+
+escapeHtml(lastGame.title)+
+'</title>'+
+'<style>'+
+'body{margin:0;background:#090d16;color:white;font:18px Arial;text-align:center;padding:40px}'+
+'button{padding:15px 24px;border:0;border-radius:12px;background:#6c63ff;color:white;font-weight:bold}'+
+'</style>'+
+'<h1>'+
+escapeHtml(lastGame.title)+
+'</h1>'+
+'<p>'+
+escapeHtml(lastGame.prompt)+
+'</p>'+
+'<p>'+
+'Жанр: '+
+escapeHtml(lastGame.genre)+
+'</p>'+
+'<p>'+
+'Платформы: '+
+escapeHtml(
+lastGame.platforms.join(
+', '
+)
+)+
+'</p>'+
+'<button onclick="alert(\\'Прототип игры запущен!\\')">'+
+'Играть'+
+'</button>'+
+'</html>';
+
+
+const blob=
+new Blob(
+[doc],
+{
+type:'text/html'
+}
+);
+
+
+const a=
+document.createElement(
+'a'
+);
+
+a.href=
+URL.createObjectURL(
+blob
+);
+
+a.download=
+safe+
+'.html';
+
+a.click();
+
+URL.revokeObjectURL(
+a.href
+);
+
+}
+
+
+document
+.getElementById(
+'prompt'
+)
+.addEventListener(
+'input',
+updatePreview
+);
+
+
+updatePreview();
 
 </script>
 
